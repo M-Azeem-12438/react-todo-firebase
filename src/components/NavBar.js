@@ -1,6 +1,9 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
- function NavBar() {
+import {Link, useHistory} from 'react-router-dom';
+import {auth} from '../firebase';
+import {history} from 'react-router-dom'
+ function NavBar(user) {
+   const history=useHistory() //for logout button
     return (
         <div>
             <nav>
@@ -8,9 +11,18 @@ import {Link} from 'react-router-dom'
     
     <Link to="/" className="brand-logo">Logo</Link>
       <ul id="nav-mobile" className="right ">
-        <li><Link to="/Login">Login</Link></li>
-        <li><Link to="/Signup">Signup</Link></li>
-        <button className="btn red" >Logout</button>
+      {
+        user? //if login
+        <li>  <button className="btn red" onClick ={()=>{
+          auth.signOut()
+          history.push('/Login') //if click on button push to login page
+        }}>Logout</button></li>
+          : //not login
+          <div>  <li><Link to="/Login">Login</Link></li>
+        <li><Link to="/Signup">Signup</Link></li></div>
+      }
+      
+        
       </ul>
     </div>
   </nav>

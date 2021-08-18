@@ -8,10 +8,7 @@ function Signup() {
     const handleSubmit =async (e)=>{
         e.preventDefault()
         console.log(email,password)
-
         try{
-
-        
      const result= await auth.createUserWithEmailAndPassword(email,password)
      window.  M.toast({html: 'Welcome ', classes:"green"})
      history.push('/');
@@ -25,11 +22,11 @@ function Signup() {
        <h3>Signup</h3>  
     <form onSubmit={(e)=>handleSubmit(e)}>
     <div class="input-field ">
-          <input type="email" placeholder="E-mail" onChange={(e)=>setemail(e.target.value)}/>
-          <input type="password" placeholder="password" onChange={(e)=>setpassword(e.target.value)}/>
+          <input type="email" placeholder="E-mail" value={email} onChange={(e)=>setemail(e.target.value)}/>
+          <input type="password" placeholder="password" value={password} onChange={(e)=>setpassword(e.target.value)}/>
        
         </div>
-        <button type="submit" className="btn green">Signup</button>
+        <button type="submit" className="btn brown">Signup</button>
     </form> 
     </div>
     )
