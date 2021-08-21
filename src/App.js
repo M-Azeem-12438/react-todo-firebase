@@ -11,12 +11,15 @@ import React,{useState,useEffect} from 'react';
 function App() {
   const [user,setUser]=useState(null)
 useEffect(() => {
-  auth.onAuthStateChanged(user=>{
+  const unsubscribe=auth.onAuthStateChanged(user=>{
     if (user) setUser(user)
 
     else
     setUser(null)
   })
+  return()=>{
+    unsubscribe()
+  }
   
 }, [])
   return (

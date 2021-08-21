@@ -2,14 +2,14 @@ import React from 'react'
 import {Link, useHistory} from 'react-router-dom';
 import {auth} from '../firebase';
 import {history} from 'react-router-dom'
- function NavBar(user) {
+ function NavBar({user}) {
    const history=useHistory() //for logout button
     return (
         <div>
             <nav>
     <div className="nav-wrapper brown">
     
-    <Link to="/" className="brand-logo">Logo</Link>
+    <Link to="/" className="brand-logo"  >todos</Link>
       <ul id="nav-mobile" className="right ">
       {
         user? //if login
